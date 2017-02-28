@@ -2,9 +2,9 @@ package controllers
 
 import (
 	"github.com/revel/revel"
-	"myapp9/app/models"
-	"myapp9/app/routes"
-	"myapp9/app/services"
+	"github.com/syedomair/revel_client/app/models"
+	"github.com/syedomair/revel_client/app/routes"
+	"github.com/syedomair/revel_client/app/services"
         "fmt"
         "encoding/json"
         "strconv"
