@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{{.title}}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+
+  {{template "inlineStyle.html" .}}
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">SAMPLE REVEL PROJECT</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="http://www.linkedin.com/in/syedkhalidomair">About</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#postmanModal">Postman Helper</a></li>
+        <li><a href="http://www.linkedin.com/in/syedkhalidomair">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {{if not .user_id }}
+          <li><a href="#" data-toggle="modal" data-target="#signinModal"><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#signupModal"><span class="glyphicon glyphicon-pencil" ></span> Sign Up</a></li>
+        {{else}}
+          <li><a href="{{url "Application.Signout"}}" ><span class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
+        {{end}}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!--signup  Modal -->
+  <div class="modal fade" id="postmanModal" role="dialog">
+    <div class="modal-dialog modal-bg">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Postman Header Helper </h4>
+        </div>
+        <div class="modal-body">
+            <p id="postmanErrorMsg" class="text-danger"></p>
+            <form action="{{url "Application.Signup"}}" method="POST">
+              <div class="row">
+                  <div class="col-sm-6 text-left"><strong>Email:</strong></div>
+                  <div class="col-sm-5"><input id="fldPostEmail" type="text" size="30" value=""></div>
+              </div>
+              <br>
+              <div class="row">
+                  <div class="col-sm-6 text-left"><strong>Password:</strong></div>
+                  <div class="col-sm-5"><input id="fldPostPassword" type="text" size="30" value=""></div>
+              </div>
+              <br>
+              <div class="row">
+                  <div class="col-sm-6 text-left"><strong>API KEY:</strong></div>
+                  <div class="col-sm-5"><input id="fldPostAPIKey" type="text" size="30" value="{{get_global_property "api_key"}}"></div>
+              </div>
+              <br>
+              <div class="row">
+                  <div class="col-sm-6 text-left"><strong>API Secret:</strong></div>
+                  <div class="col-sm-5"><input id="fldPostAPISecret" type="text" size="30" value="{{get_global_property "api_secert"}}"></div>
+              </div>
+              <br>
+              <div class="row">
+                  <div class="col-sm-6 text-left"><strong>x-key:</strong></div>
+                  <div class="col-sm-5"><input id="fldPostXKey" type="text" size="30" value="{{get_global_property "api_key"}}"></div>
+              </div>
+              <hr>
+              <div class="row">
+                  <div class="col-sm-2 text-left"><strong>x-jwt:</strong></div>
+                  <div class="col-sm-7"><textarea id="fldPostXJWT" rows="4" cols="55"></textarea></div>
+              </div>
+              <br>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <input id="btnPostman" type="submit" class="btn btn-default" value="Get Header "> 
+            </form>
+
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--signup  Modal -->
+  <div class="modal fade" id="signupModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Sign Up </h4>
+        </div>
+        <div class="modal-body">
+            <p id="errorMsg" class="text-danger"></p>
+            <form action="{{url "Application.Signup"}}" method="POST">
+              <div class="row">
+                  <div class="col-sm-6 text-left"><strong>Email:</strong></div>
+                  <div class="col-sm-5"><input id="fldEmail" type="text" name="user.Email" size="10" value=""></div>
+              </div>
+              <br>
+              <div class="row">
+                  <div class="col-sm-6 text-left"><strong>First Name:</strong></div>
+                  <div class="col-sm-5"><input id="fldFirstName" type="text" name="user.FirstName" size="10" value=""></div>
+              </div>
+              <br>
+              <div class="row">
+                  <div class="col-sm-6 text-left"><strong>Last Name:</strong></div>
+                  <div class="col-sm-5"><input id="fldLastName" type="text" name="user.LastName" size="10" value=""></div>
+              </div>
+              <br>
+              <div class="row">
+                  <div class="col-sm-6 text-left"><strong>Password:</strong></div>
+                  <div class="col-sm-5"><input id="fldPassword" type="password" name="user.Password" size="10" value=""></div>
+              </div>
+              <br>
+              <div class="row">
+                  <div class="col-sm-6 text-left"><strong>Verify Password:</strong></div>
+                  <div class="col-sm-5"><input id="fldVerifyPassword" type="password" name="verifyPassword" size="10" value=""></div>
+              </div>
+              <br>
+              <br>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <input id="btnSignUp" type="submit" class="btn btn-default" value="Sign Up"> 
+            </form>
+
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--signin Modal -->
+  <div class="modal fade" id="signinModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Sign In</h4>
+        </div>
+        <div class="modal-body">
+            <p id="signInErrorMsg" class="text-danger"></p>
+            <form action="{{url "Application.Signin"}}" method="POST">
+              <div class="row">
+                  <div class="col-sm-6 text-left"><strong>Email:</strong></div>
+                  <div class="col-sm-5"><input id="signInFldEmail" type="text" name="user.Email" size="10" value=""></div>
+              </div>
+              <br>
+              <div class="row">
+                  <div class="col-sm-6 text-left"><strong>Password:</strong></div>
+                  <div class="col-sm-5"><input id="signInFldPassword" type="password" name="user.Password" size="10" value=""></div>
+              </div>
+              <br>
+              <br>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <input id="btnSignIn" type="submit" class="btn btn-default" value="Sign In"> 
+            </form>
+
+        </div>
+
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<script>
+jQuery(document).ready(function () {
+    $('#dataTable').DataTable();
+    function isEmail(email) {
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return regex.test(email);
+    }
+    $("#btnSignUp").click(function(event){
+
+        if($("#fldEmail").val()==""){
+            $("#errorMsg").html("Error: Email field is empty.");
+            event.preventDefault();
+        }
+        if($("#fldFirstName").val()==""){
+            $("#errorMsg").html("Error: First Name field is empty.");
+            event.preventDefault();
+        }
+        if($("#fldLastName").val()==""){
+            $("#errorMsg").html("Error: Last Name field is empty.");
+            event.preventDefault();
+        }
+        if($("#fldPassword").val()==""){
+            $("#errorMsg").html("Error: Password field is empty.");
+            event.preventDefault();
+        }
+        if($("#fldVerifyPassword").val()==""){
+            $("#errorMsg").html("Error: Verify Password field is empty.");
+            event.preventDefault();
+        }
+        if($("#fldVerifyPassword").val()!=$("#fldPassword").val()){
+            $("#errorMsg").html("Error: Password and Verify Password should be same.");
+            event.preventDefault();
+        }
+        if(!isEmail($("#fldEmail").val())){
+            $("#errorMsg").html("Error: Invalid Email address. ");
+            event.preventDefault();
+        }
+    });
+
+    $("#btnSignIn").click(function(event){
+
+        if($("#signInFldEmail").val()==""){
+            $("#signInErrorMsg").html("Error: Email field is empty.");
+            event.preventDefault();
+        }
+        if($("#signInFldPassword").val()==""){
+            $("#signInErrorMsg").html("Error: Password field is empty.");
+            event.preventDefault();
+        }
+        if(!isEmail($("#signInFldEmail").val())){
+            $("#signInErrorMsg").html("Error: Invalid Email address. ");
+            event.preventDefault();
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: "{{url "Application.Signin"}}",
+            data: { "email": $("#signInFldEmail").val(), "password":$("#signInFldPassword").val() },
+            success: function (response) {
+                if(response != 'success'){
+                    $("#signInErrorMsg").html(response);
+                }else{
+                    window.location.href = "{{url "Application.Index"}}"
+                }
+            }
+        });
+        event.preventDefault();
+
+    });
+
+    $("#btnPostman").click(function(event){
+
+        if($("#fldPostEmail").val()==""){
+            $("#postmanErrorMsg").html("Error: Email field is empty.");
+            event.preventDefault();
+        }
+        if($("#fldPostPassord").val()==""){
+            $("#postmanErrorMsg").html("Error: Password field is empty.");
+            event.preventDefault();
+        }
+        if(!isEmail($("#fldPostEmail").val())){
+            $("#postmanErrorMsg").html("Error: Invalid Email address. ");
+            event.preventDefault();
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: "{{url "Application.GetJWTToken"}}",
+            data: { "email": $("#fldPostEmail").val(), "password":$("#fldPostPassword").val() },
+            success: function (response) {
+                $("#fldPostXJWT").html(response);
+            }
+        });
+        event.preventDefault();
+
+    });
+});
+</script>

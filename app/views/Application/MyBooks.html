@@ -1,0 +1,46 @@
+{{set . "title" "My Books"}}
+{{template "header.html" .}}
+ 
+<div class="container-fluid text-center">    
+  <div class="row content">
+
+    <!-- sidenav -->
+    {{template "sidebar.html" .}}
+    
+    <!-- bodycontent -->
+    <div class="col-sm-10 text-left"> 
+      <h1>My Books</h1> 
+      <hr>
+
+      <table id="dataTable" class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Publish</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{range .data }}
+          <tr>
+            <td><a href="{{url "Application.EditBookForm"}}?book_id={{cnv_fint .id}}">{{.id}}</a></td>
+            <td><a href="{{url "Application.EditBookForm"}}?book_id={{cnv_fint .id}}">{{.book_name}}</a></td>
+            <td><a href="{{url "Application.EditBookForm"}}?book_id={{cnv_fint .id}}">{{.description}}</a> </td>
+            <td>{{.publish}} </td>
+            <td>
+                <a href="{{url "Application.EditBookForm"}}?book_id={{cnv_fint .id}}" class="btn btn-icon btn-default btn-xs tooltip-btn" data-toggle="tooltip" data-placement="top" title="Update Book" data-original-title="Update Book"><span class="glyphicon glyphicon-pencil" ></span></a>
+
+            </td>
+          </tr>
+          {{end}}
+        </tbody>
+      </table>
+
+      <hr>
+    </div>
+  </div>
+</div>
+
+{{template "footer.html" .}}
