@@ -25,12 +25,12 @@
         <tbody>
           {{range .data }}
           <tr>
-            <td><a href="{{url "Application.EditBookForm"}}?book_id={{cnv_fint .id}}">{{.id}}</a></td>
-            <td><a href="{{url "Application.EditBookForm"}}?book_id={{cnv_fint .id}}">{{.book_name}}</a></td>
-            <td><a href="{{url "Application.EditBookForm"}}?book_id={{cnv_fint .id}}">{{.description}}</a> </td>
+            <td><a href="{{url "BookController.EditBookForm"}}?book_id={{cnv_fint .id}}">{{.id}}</a></td>
+            <td><a href="{{url "BookController.EditBookForm"}}?book_id={{cnv_fint .id}}">{{.book_name}}</a></td>
+            <td><a href="{{url "BookController.EditBookForm"}}?book_id={{cnv_fint .id}}">{{.description}}</a> </td>
             <td>{{.publish}} </td>
             <td>
-                <a href="{{url "Application.EditBookForm"}}?book_id={{cnv_fint .id}}" class="btn btn-icon btn-default btn-xs tooltip-btn" data-toggle="tooltip" data-placement="top" title="Update Book" data-original-title="Update Book"><span class="glyphicon glyphicon-pencil" ></span></a>
+                <a href="{{url "BookController.EditBookForm"}}?book_id={{cnv_fint .id}}" class="btn btn-icon btn-default btn-xs tooltip-btn" data-toggle="tooltip" data-placement="top" title="Update Book" data-original-title="Update Book"><span class="glyphicon glyphicon-pencil" ></span></a>
 
             </td>
           </tr>

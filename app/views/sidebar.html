@@ -9,8 +9,8 @@
         <ul class="sidebar-nav" id="sidebar">     
           <li><a href="{{url "Application.Index"}}">Published Books<span class="glyphicon glyphicon-list-alt"></span></a></p>
           {{if .user_id }}
-            <li><a href="{{url "Application.MyBooks"}}">My Books<span class="glyphicon glyphicon-link"></span></a></li>
-            <li><a href="{{url "Application.AddBookForm"}}">Add New Book<span class="glyphicon glyphicon-pencil"></span></a></li>
+            <li><a href="{{url "BookController.MyBooks"}}">My Books<span class="glyphicon glyphicon-link"></span></a></li>
+            <li><a href="{{url "BookController.AddBookForm"}}">Add New Book<span class="glyphicon glyphicon-pencil"></span></a></li>
           {{end}}
         </ul>
       <!--</div>-->

@@ -56,7 +56,7 @@ func (c CommonService) CallBackend(methodType string, url string, jsonStr []byte
 }
 
 func (c CommonService) CreateJWTToken(userName string, password string) string {
-    apiSecret := revel.Config.StringDefault("api_secert", "")
+    apiSecret := revel.Config.StringDefault("api_secret", "")
     signingKey := []byte(apiSecret)
 
     type Claims struct {
