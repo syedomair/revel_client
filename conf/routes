@@ -5,15 +5,15 @@
 module:testrunner
 
 GET     /                                       Application.Index
-POST    /signup                                 Application.Signup
-POST    /signin                                 Application.Signin
-GET     /signout                                Application.Signout
-GET     /my-books                               Application.MyBooks
-GET     /add-book-form                          Application.AddBookForm
-GET     /edit-book-form                         Application.EditBookForm
-POST    /add-book                               Application.AddBook
-POST    /edit-book                              Application.EditBook
 POST    /jwt-token                              Application.GetJWTToken
+POST    /signup                                 UserController.Signup
+POST    /signin                                 UserController.Signin
+GET     /signout                                UserController.Signout
+GET     /my-books                               BookController.MyBooks
+GET     /add-book-form                          BookController.AddBookForm
+GET     /edit-book-form                         BookController.EditBookForm
+POST    /add-book                               BookController.AddBook
+POST    /edit-book                              BookController.EditBook
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
