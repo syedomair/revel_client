@@ -4,72 +4,7 @@
 
 A high-productivity web framework for the [Go language](http://www.golang.org/).
 
-### Start the web server:
+## About
+This application <a href="https://murmuring-ravine-44482.herokuapp.com" >'API Client Application'</a> is a client of the <a href="https://s    erene-waters-85209.herokuapp.com/" >'Backend REST API Application'</a> server. The application allows user to SignUp, SignIn, SignOut, Add New Book, Edit Book, View My Books, Publish/Unpublish Books and View Published Books. There is no direct database connection for this application, it relies on the backend server for all the data needs.
+ The client server communication is secured with API Key and <a href="https://jwt.io/" >JWT</a> token. You can test REST Backend API server with any REST API client applications for exmaple <a href="https://www.getpostman.com/" >Postman</a>, but you would need secure headers. In order to this, please click on <a href="https://murmuring-ravine-44482.herokuapp.com?helper=true" >'API Client Helper'</a> link and fill out the form to create secure headers for the API test. 
 
-    revel run myapp
-
-   Run with <tt>--help</tt> for options.
-
-### Go to http://localhost:9000/ and you'll see:
-
-"It works"
-
-### Description of Contents
-
-The default directory structure of a generated Revel application:
-
-    myapp               App root
-      app               App sources
-        controllers     App controllers
-          init.go       Interceptor registration
-        models          App domain models
-        routes          Reverse routes (generated code)
-        views           Templates
-      tests             Test suites
-      conf              Configuration files
-        app.conf        Main configuration file
-        routes          Routes definition
-      messages          Message files
-      public            Public assets
-        css             CSS files
-        js              Javascript files
-        images          Image files
-
-app
-
-    The app directory contains the source code and templates for your application.
-
-conf
-
-    The conf directory contains the application’s configuration files. There are two main configuration files:
-
-    * app.conf, the main configuration file for the application, which contains standard configuration parameters
-    * routes, the routes definition file.
-
-
-messages
-
-    The messages directory contains all localized message files.
-
-public
-
-    Resources stored in the public directory are static assets that are served directly by the Web server. Typically it is split into three standard sub-directories for images, CSS stylesheets and JavaScript files.
-
-    The names of these directories may be anything; the developer need only update the routes.
-
-test
-
-    Tests are kept in the tests directory. Revel provides a testing framework that makes it easy to write and run functional tests against your application.
-
-### Follow the guidelines to start developing your application:
-
-* The README file created within your application.
-* The [Getting Started with Revel](http://revel.github.io/tutorial/index.html).
-* The [Revel guides](http://revel.github.io/manual/index.html).
-* The [Revel sample apps](http://revel.github.io/samples/index.html).
-* The [API documentation](https://godoc.org/github.com/revel/revel).
-
-## Contributing
-We encourage you to contribute to Revel! Please check out the [Contributing to Revel
-guide](https://github.com/revel/revel/blob/master/CONTRIBUTING.md) for guidelines about how
-to proceed. [Join us](https://groups.google.com/forum/#!forum/revel-framework)!

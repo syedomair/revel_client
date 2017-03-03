@@ -5,10 +5,12 @@
 module:testrunner
 
 GET     /                                       Application.Index
+GET     /about                                  Application.About
 POST    /jwt-token                              Application.GetJWTToken
 POST    /signup                                 UserController.Signup
 POST    /signin                                 UserController.Signin
 GET     /signout                                UserController.Signout
+GET     /published-books                        BookController.PublishedBooks
 GET     /my-books                               BookController.MyBooks
 GET     /add-book-form                          BookController.AddBookForm
 GET     /edit-book-form                         BookController.EditBookForm

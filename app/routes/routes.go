@@ -4,6 +4,36 @@ package routes
 import "github.com/revel/revel"
 
 
+type tApplication struct {}
+var Application tApplication
+
+
+func (_ tApplication) Index(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Application.Index", args).Url
+}
+
+func (_ tApplication) About(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Application.About", args).Url
+}
+
+func (_ tApplication) GetJWTToken(
+		email string,
+		password string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "email", email)
+	revel.Unbind(args, "password", password)
+	return revel.MainRouter.Reverse("Application.GetJWTToken", args).Url
+}
+
+
 type tUserController struct {}
 var UserController tUserController
 
@@ -39,6 +69,13 @@ func (_ tUserController) Signout(
 type tBookController struct {}
 var BookController tBookController
 
+
+func (_ tBookController) PublishedBooks(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("BookController.PublishedBooks", args).Url
+}
 
 func (_ tBookController) MyBooks(
 		) string {
@@ -82,58 +119,6 @@ func (_ tBookController) AddBook(
 }
 
 
-type tApplication struct {}
-var Application tApplication
-
-
-func (_ tApplication) Index(
-		) string {
-	args := make(map[string]string)
-	
-	return revel.MainRouter.Reverse("Application.Index", args).Url
-}
-
-func (_ tApplication) GetJWTToken(
-		email string,
-		password string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "email", email)
-	revel.Unbind(args, "password", password)
-	return revel.MainRouter.Reverse("Application.GetJWTToken", args).Url
-}
-
-
-type tStatic struct {}
-var Static tStatic
-
-
-func (_ tStatic) Serve(
-		prefix string,
-		filepath string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "prefix", prefix)
-	revel.Unbind(args, "filepath", filepath)
-	return revel.MainRouter.Reverse("Static.Serve", args).Url
-}
-
-func (_ tStatic) ServeModule(
-		moduleName string,
-		prefix string,
-		filepath string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "moduleName", moduleName)
-	revel.Unbind(args, "prefix", prefix)
-	revel.Unbind(args, "filepath", filepath)
-	return revel.MainRouter.Reverse("Static.ServeModule", args).Url
-}
-
-
 type tTestRunner struct {}
 var TestRunner tTestRunner
 
@@ -170,6 +155,35 @@ func (_ tTestRunner) List(
 	args := make(map[string]string)
 	
 	return revel.MainRouter.Reverse("TestRunner.List", args).Url
+}
+
+
+type tStatic struct {}
+var Static tStatic
+
+
+func (_ tStatic) Serve(
+		prefix string,
+		filepath string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "prefix", prefix)
+	revel.Unbind(args, "filepath", filepath)
+	return revel.MainRouter.Reverse("Static.Serve", args).Url
+}
+
+func (_ tStatic) ServeModule(
+		moduleName string,
+		prefix string,
+		filepath string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "moduleName", moduleName)
+	revel.Unbind(args, "prefix", prefix)
+	revel.Unbind(args, "filepath", filepath)
+	return revel.MainRouter.Reverse("Static.ServeModule", args).Url
 }
 
 

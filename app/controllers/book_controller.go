@@ -14,6 +14,19 @@ type BookController struct {
      *revel.Controller
 }
 
+func (c BookController) PublishedBooks() revel.Result {
+
+    resultMap := make(map[string]interface{})
+    resultMap = services.BookService{}.GetBooks(c.Session)
+    resultMap1 := make(map[string]interface{})
+    resultMap1 = resultMap["data"].(map[string]interface{})
+    data := resultMap1["list"]
+
+    user_id := c.Session["user_id"]
+    user_name := c.Session["user_name"]
+    return c.Render(user_id, user_name, data)
+}
+
 func (c BookController) MyBooks() revel.Result {
 
     resultMap := make(map[string]interface{})
