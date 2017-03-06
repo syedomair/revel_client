@@ -30,38 +30,6 @@ func main() {
 	revel.Init(*runMode, *importPath, *srcPath)
 	revel.INFO.Println("Running revel server")
 	
-	revel.RegisterController((*controllers.Application)(nil),
-		[]*revel.MethodType{
-			&revel.MethodType{
-				Name: "Index",
-				Args: []*revel.MethodArg{ 
-				},
-				RenderArgNames: map[int][]string{ 
-				},
-			},
-			&revel.MethodType{
-				Name: "About",
-				Args: []*revel.MethodArg{ 
-				},
-				RenderArgNames: map[int][]string{ 
-					23: []string{ 
-						"user_id",
-						"user_name",
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "GetJWTToken",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "email", Type: reflect.TypeOf((*string)(nil)) },
-					&revel.MethodArg{Name: "password", Type: reflect.TypeOf((*string)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-				},
-			},
-			
-		})
-	
 	revel.RegisterController((*controllers.UserController)(nil),
 		[]*revel.MethodType{
 			&revel.MethodType{
@@ -94,11 +62,23 @@ func main() {
 	revel.RegisterController((*controllers.BookController)(nil),
 		[]*revel.MethodType{
 			&revel.MethodType{
+				Name: "PublishedBooksMicro",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					25: []string{ 
+						"user_id",
+						"user_name",
+						"resultMapMicro",
+					},
+				},
+			},
+			&revel.MethodType{
 				Name: "PublishedBooks",
 				Args: []*revel.MethodArg{ 
 				},
 				RenderArgNames: map[int][]string{ 
-					27: []string{ 
+					38: []string{ 
 						"user_id",
 						"user_name",
 						"data",
@@ -110,7 +90,7 @@ func main() {
 				Args: []*revel.MethodArg{ 
 				},
 				RenderArgNames: map[int][]string{ 
-					40: []string{ 
+					51: []string{ 
 						"user_id",
 						"user_name",
 						"data",
@@ -122,7 +102,7 @@ func main() {
 				Args: []*revel.MethodArg{ 
 				},
 				RenderArgNames: map[int][]string{ 
-					47: []string{ 
+					58: []string{ 
 						"user_id",
 						"user_name",
 					},
@@ -134,7 +114,7 @@ func main() {
 					&revel.MethodArg{Name: "book_id", Type: reflect.TypeOf((*string)(nil)) },
 				},
 				RenderArgNames: map[int][]string{ 
-					59: []string{ 
+					70: []string{ 
 						"user_id",
 						"user_name",
 						"data",
@@ -153,6 +133,38 @@ func main() {
 				Name: "AddBook",
 				Args: []*revel.MethodArg{ 
 					&revel.MethodArg{Name: "book", Type: reflect.TypeOf((*models.Book)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			
+		})
+	
+	revel.RegisterController((*controllers.Application)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "Index",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "About",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					23: []string{ 
+						"user_id",
+						"user_name",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "GetJWTToken",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "email", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "password", Type: reflect.TypeOf((*string)(nil)) },
 				},
 				RenderArgNames: map[int][]string{ 
 				},

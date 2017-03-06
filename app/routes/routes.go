@@ -4,36 +4,6 @@ package routes
 import "github.com/revel/revel"
 
 
-type tApplication struct {}
-var Application tApplication
-
-
-func (_ tApplication) Index(
-		) string {
-	args := make(map[string]string)
-	
-	return revel.MainRouter.Reverse("Application.Index", args).Url
-}
-
-func (_ tApplication) About(
-		) string {
-	args := make(map[string]string)
-	
-	return revel.MainRouter.Reverse("Application.About", args).Url
-}
-
-func (_ tApplication) GetJWTToken(
-		email string,
-		password string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "email", email)
-	revel.Unbind(args, "password", password)
-	return revel.MainRouter.Reverse("Application.GetJWTToken", args).Url
-}
-
-
 type tUserController struct {}
 var UserController tUserController
 
@@ -69,6 +39,13 @@ func (_ tUserController) Signout(
 type tBookController struct {}
 var BookController tBookController
 
+
+func (_ tBookController) PublishedBooksMicro(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("BookController.PublishedBooksMicro", args).Url
+}
 
 func (_ tBookController) PublishedBooks(
 		) string {
@@ -116,6 +93,36 @@ func (_ tBookController) AddBook(
 	
 	revel.Unbind(args, "book", book)
 	return revel.MainRouter.Reverse("BookController.AddBook", args).Url
+}
+
+
+type tApplication struct {}
+var Application tApplication
+
+
+func (_ tApplication) Index(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Application.Index", args).Url
+}
+
+func (_ tApplication) About(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Application.About", args).Url
+}
+
+func (_ tApplication) GetJWTToken(
+		email string,
+		password string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "email", email)
+	revel.Unbind(args, "password", password)
+	return revel.MainRouter.Reverse("Application.GetJWTToken", args).Url
 }
 
 

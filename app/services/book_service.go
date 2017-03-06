@@ -28,3 +28,9 @@ func (c BookService) EditBook(book_id string, jsonStr []byte, session revel.Sess
 func (c BookService) GetABook(book_id string, session revel.Session) map[string]interface{} {
     return c.CallGetBackend("GET", "book/"+book_id, session) 
 }
+
+func (c BookService) GetPublicBooks(jsonStr []byte) []map[string]interface{} {
+    return c.CallMircoBackend("POST", "public/books", jsonStr) 
+}
+
+
