@@ -30,35 +30,6 @@ func main() {
 	revel.Init(*runMode, *importPath, *srcPath)
 	revel.INFO.Println("Running revel server")
 	
-	revel.RegisterController((*controllers.UserController)(nil),
-		[]*revel.MethodType{
-			&revel.MethodType{
-				Name: "Signup",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "user", Type: reflect.TypeOf((*models.User)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-				},
-			},
-			&revel.MethodType{
-				Name: "Signin",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "email", Type: reflect.TypeOf((*string)(nil)) },
-					&revel.MethodArg{Name: "password", Type: reflect.TypeOf((*string)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-				},
-			},
-			&revel.MethodType{
-				Name: "Signout",
-				Args: []*revel.MethodArg{ 
-				},
-				RenderArgNames: map[int][]string{ 
-				},
-			},
-			
-		})
-	
 	revel.RegisterController((*controllers.BookController)(nil),
 		[]*revel.MethodType{
 			&revel.MethodType{
@@ -66,9 +37,10 @@ func main() {
 				Args: []*revel.MethodArg{ 
 				},
 				RenderArgNames: map[int][]string{ 
-					25: []string{ 
+					26: []string{ 
 						"user_id",
 						"user_name",
+						"server",
 						"resultMapMicro",
 					},
 				},
@@ -78,9 +50,10 @@ func main() {
 				Args: []*revel.MethodArg{ 
 				},
 				RenderArgNames: map[int][]string{ 
-					38: []string{ 
+					40: []string{ 
 						"user_id",
 						"user_name",
+						"server",
 						"data",
 					},
 				},
@@ -90,9 +63,10 @@ func main() {
 				Args: []*revel.MethodArg{ 
 				},
 				RenderArgNames: map[int][]string{ 
-					51: []string{ 
+					54: []string{ 
 						"user_id",
 						"user_name",
+						"server",
 						"data",
 					},
 				},
@@ -102,9 +76,10 @@ func main() {
 				Args: []*revel.MethodArg{ 
 				},
 				RenderArgNames: map[int][]string{ 
-					58: []string{ 
+					62: []string{ 
 						"user_id",
 						"user_name",
+						"server",
 					},
 				},
 			},
@@ -114,9 +89,10 @@ func main() {
 					&revel.MethodArg{Name: "book_id", Type: reflect.TypeOf((*string)(nil)) },
 				},
 				RenderArgNames: map[int][]string{ 
-					70: []string{ 
+					75: []string{ 
 						"user_id",
 						"user_name",
+						"server",
 						"data",
 					},
 				},
@@ -154,9 +130,10 @@ func main() {
 				Args: []*revel.MethodArg{ 
 				},
 				RenderArgNames: map[int][]string{ 
-					23: []string{ 
+					31: []string{ 
 						"user_id",
 						"user_name",
+						"server",
 					},
 				},
 			},
@@ -165,6 +142,35 @@ func main() {
 				Args: []*revel.MethodArg{ 
 					&revel.MethodArg{Name: "email", Type: reflect.TypeOf((*string)(nil)) },
 					&revel.MethodArg{Name: "password", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			
+		})
+	
+	revel.RegisterController((*controllers.UserController)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "Signup",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "user", Type: reflect.TypeOf((*models.User)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "Signin",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "email", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "password", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "Signout",
+				Args: []*revel.MethodArg{ 
 				},
 				RenderArgNames: map[int][]string{ 
 				},

@@ -4,38 +4,6 @@ package routes
 import "github.com/revel/revel"
 
 
-type tUserController struct {}
-var UserController tUserController
-
-
-func (_ tUserController) Signup(
-		user interface{},
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "user", user)
-	return revel.MainRouter.Reverse("UserController.Signup", args).Url
-}
-
-func (_ tUserController) Signin(
-		email string,
-		password string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "email", email)
-	revel.Unbind(args, "password", password)
-	return revel.MainRouter.Reverse("UserController.Signin", args).Url
-}
-
-func (_ tUserController) Signout(
-		) string {
-	args := make(map[string]string)
-	
-	return revel.MainRouter.Reverse("UserController.Signout", args).Url
-}
-
-
 type tBookController struct {}
 var BookController tBookController
 
@@ -123,6 +91,38 @@ func (_ tApplication) GetJWTToken(
 	revel.Unbind(args, "email", email)
 	revel.Unbind(args, "password", password)
 	return revel.MainRouter.Reverse("Application.GetJWTToken", args).Url
+}
+
+
+type tUserController struct {}
+var UserController tUserController
+
+
+func (_ tUserController) Signup(
+		user interface{},
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "user", user)
+	return revel.MainRouter.Reverse("UserController.Signup", args).Url
+}
+
+func (_ tUserController) Signin(
+		email string,
+		password string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "email", email)
+	revel.Unbind(args, "password", password)
+	return revel.MainRouter.Reverse("UserController.Signin", args).Url
+}
+
+func (_ tUserController) Signout(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("UserController.Signout", args).Url
 }
 
 

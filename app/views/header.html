@@ -4,12 +4,14 @@
 <head>
   <title>{{.title}}</title>
   <meta charset="utf-8">
+  <meta name="google-signin-client_id" content="268752540777-pe6pqdklprj3qbosb5qivjmfvut67m9r.apps.googleusercontent.com">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 
   {{template "inlineStyle.html" .}}
 </head>
@@ -23,7 +25,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">API CLIENT APPLICATION</a>
+      <a class="navbar-brand" href="#">CLIENT APPLICATION </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -222,24 +224,18 @@
                   <input id="btnSignIn" type="submit" class="btn btn-default" value="Sign In"> 
                 </div>
               </div>
-            </form>
-{{/*
-            <form action="{{url "UserController.Signin"}}" method="POST">
-              <div class="row">
-                  <div class="col-sm-6 text-left"><strong>Email:</strong></div>
-                  <div class="col-sm-5"><input id="signInFldEmail" type="text" name="user.Email" size="10" value=""></div>
+	      {{/*
+		    OR<br>
+		    <b>Sign In with Google</b><br><br>
+              <div class="form-group"> 
+                <div class="col-sm-offset-5 col-sm-11">
+	            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                </div>
               </div>
-              <br>
-              <div class="row">
-                  <div class="col-sm-6 text-left"><strong>Password:</strong></div>
-                  <div class="col-sm-5"><input id="signInFldPassword" type="password" name="user.Password" size="10" value=""></div>
-              </div>
-              <br>
-              <br>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <input id="btnSignIn" type="submit" class="btn btn-default" value="Sign In"> 
+	      */}}
             </form>
-*/}}
+
+
         </div>
 
         <div class="modal-footer">
@@ -359,6 +355,9 @@ jQuery(document).ready(function () {
         });
         event.preventDefault();
 
+    });
+    $("#serverSelector").change(function(){
+	window.location = '{{url "Application.Index"}}'+'?server='+$(this).val();
     });
 });
 </script>
