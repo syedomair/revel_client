@@ -14,18 +14,6 @@ type BookController struct {
 	*revel.Controller
 }
 
-func (c BookController) PublishedBooksMicro() revel.Result {
-
-	bookJson, _ := json.Marshal("")
-	var resultMapMicro []map[string]interface{}
-	resultMapMicro = services.BookService{}.GetPublicBooks(bookJson)
-
-	user_id := c.Session["user_id"]
-	user_name := c.Session["user_name"]
-	server := c.Session["server"]
-	return c.Render(user_id, user_name, server, resultMapMicro)
-}
-
 func (c BookController) PublishedBooks() revel.Result {
 
 	resultMap := make(map[string]interface{})

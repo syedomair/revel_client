@@ -11,7 +11,6 @@ POST    /signup                                 UserController.Signup
 POST    /signin                                 UserController.Signin
 GET     /signout                                UserController.Signout
 GET     /published-books                        BookController.PublishedBooks
-GET     /published-books-micro                  BookController.PublishedBooksMicro
 GET     /my-books                               BookController.MyBooks
 GET     /add-book-form                          BookController.AddBookForm
 GET     /edit-book-form                         BookController.EditBookForm
