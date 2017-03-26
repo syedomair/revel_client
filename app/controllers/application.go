@@ -37,5 +37,5 @@ func (c Application) GetJWTToken(email string, password string) revel.Result {
 
 	jwtStr := services.CommonService{}.CreateJWTToken(email, password)
 
-	return c.RenderJson(jwtStr)
+	return c.Render(jwtStr)
 }
