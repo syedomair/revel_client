@@ -6,6 +6,7 @@ module:testrunner
 
 GET     /                                       Application.Index
 GET     /about                                  Application.About
+GET     /curl-test                              Application.CurlTest
 POST    /jwt-token                              Application.GetJWTToken
 POST    /signup                                 UserController.Signup
 POST    /signin                                 UserController.Signin

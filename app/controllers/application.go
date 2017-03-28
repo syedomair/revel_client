@@ -31,6 +31,14 @@ func (c Application) About() revel.Result {
 	return c.Render(user_id, user_name, server)
 }
 
+func (c Application) CurlTest() revel.Result {
+
+	user_id := c.Session["user_id"]
+	user_name := c.Session["user_name"]
+	server := c.Session["server"]
+	return c.Render(user_id, user_name, server)
+}
+
 func (c Application) GetJWTToken(email string, password string) revel.Result {
 
 	password = b64.StdEncoding.EncodeToString([]byte(password))

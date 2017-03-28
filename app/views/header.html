@@ -31,7 +31,8 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="{{url "Application.About"}}">About</a></li>
         <li><a href="#" data-toggle="modal" data-target="#postmanModal">API Client Test Helper</a></li>
-        <li><a href="http://www.linkedin.com/in/syedkhalidomair">Contact</a></li>
+        <li><a href="{{url "Application.CurlTest"}}">Curl Test</a></li>
+        <li><a target="_blank" href="http://www.linkedin.com/in/syedkhalidomair">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {{if not .user_id }}
@@ -53,7 +54,7 @@
       <div class="modal-content text-center">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Client Test Helper </h4>
+          <h4 class="modal-title">API Client Test Helper </h4>
         </div>
         <div class="modal-body">
             <p id="postmanErrorMsg" class="text-danger"></p>
@@ -63,14 +64,14 @@
               <div class="form-group">
                 <label class="control-label col-sm-3" for="fldPostEmail">Email:</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" id="fldPostEmail" placeholder="Please Enter Email">
+                  <input type="text" class="form-control" id="fldPostEmail" placeholder="Please Enter Email eg 'john@gmail.com' ">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-sm-3" for="fldPostPassword">Password:</label>
                 <div class="col-sm-8"> 
-                  <input type="password" class="form-control" id="fldPostPassword" placeholder="Please Enter Password">
+                  <input type="password" class="form-control" id="fldPostPassword" placeholder="Please Enter Password eg '12345' ">
                 </div>
               </div>
 
@@ -206,14 +207,14 @@
               <div class="form-group">
                 <label class="control-label col-sm-3" for="signInFldEmail">Email:</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" id="signInFldEmail" name="user.Email" placeholder="Please Enter Email">
+                  <input type="text" class="form-control" id="signInFldEmail" name="user.Email" placeholder="Please Enter Email eg 'john@gmail.com' ">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-sm-3" for="signInFldPassword">Password:</label>
                 <div class="col-sm-8"> 
-                  <input type="password" class="form-control" id="signInFldPassword" name="user.Password" placeholder="Please Enter Password">
+                  <input type="password" class="form-control" id="signInFldPassword" name="user.Password" placeholder="Please Enter Password eg '12345' ">
                 </div>
               </div>
 
