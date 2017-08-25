@@ -8,3 +8,5 @@ This application <a target="_blank" href="https://murmuring-ravine-44482.herokua
 ### How to test the API server endpoints
  The client server communication is secured with API Key and <a target="_blank" href="https://jwt.io/" >JWT</a> token. You can test REST Backend API server with any REST API client applications for exmaple <a target="_blank" href="https://www.getpostman.com/" >Postman</a>, but you would need secure headers. In order to this, please click on <a target="_blank" href="https://murmuring-ravine-44482.herokuapp.com?helper=true" >'API Client Test Helper'</a> link and fill out the form to create secure headers for the API test. 
 
+##Weather Application
+https://murmuring-ravine-44482.herokuapp.com/weather
