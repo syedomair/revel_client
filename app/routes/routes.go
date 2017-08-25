@@ -4,27 +4,6 @@ package routes
 import "github.com/revel/revel"
 
 
-type tWeatherController struct {}
-var WeatherController tWeatherController
-
-
-func (_ tWeatherController) GetWeather(
-		) string {
-	args := make(map[string]string)
-	
-	return revel.MainRouter.Reverse("WeatherController.GetWeather", args).URL
-}
-
-func (_ tWeatherController) WeatherData(
-		address string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "address", address)
-	return revel.MainRouter.Reverse("WeatherController.WeatherData", args).URL
-}
-
-
 type tUserController struct {}
 var UserController tUserController
 
@@ -144,6 +123,27 @@ func (_ tApplication) GetJWTToken(
 	revel.Unbind(args, "email", email)
 	revel.Unbind(args, "password", password)
 	return revel.MainRouter.Reverse("Application.GetJWTToken", args).URL
+}
+
+
+type tWeatherController struct {}
+var WeatherController tWeatherController
+
+
+func (_ tWeatherController) GetWeather(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("WeatherController.GetWeather", args).URL
+}
+
+func (_ tWeatherController) WeatherData(
+		address string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "address", address)
+	return revel.MainRouter.Reverse("WeatherController.WeatherData", args).URL
 }
 
 
