@@ -1,0 +1,71 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Current Weather</title>
+
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:100,300,400,600,700,900,400italic' rel='stylesheet'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+ </head>
+
+ <body>
+ <!--Main Content Start -->
+ <div class="wrapper-page animated fadeInDown">
+   <div class="panel panel-color panel-primary">
+     <div class="panel-heading"> <h3 class="text-center m-t-10"> <strong>Weather Application</strong> </h3> </div>
+     <br>
+     <div class="row">
+       <div class="center-block text-center" style="width:500px;background-color:#A9A9A9;">
+
+         Please Enter the Address
+
+	 <form name="weather_form" method="POST" action="{{url "WeatherController.WeatherData"}}" class="form-horizontal m-t-40">
+           <div class="form-group ">
+             <div class="col-xs-12">
+               <input type="text" id="address" name="address" class="form-control" placeholder="1917 Pike Dr, Madison, WI, USA" />
+             </div>
+	   </div> 
+	   <button type="submit" id="btn_submit" name="submit" class="btn btn-purple w-md">Get Weather</button>
+	 </form>
+
+         <hr>
+	 <div id="formatted_address"> </div><br>
+	 <div id="temperature"> </div>
+         <hr>
+       </div>
+     </div>
+
+
+
+   </div>
+ </div>
+ <!-- Main Content Ends -->
+
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+jQuery(document).ready(function () {
+
+    $("#btn_submit").click(function(event){
+        $.ajax({
+            type: 'POST',
+	    url: "{{url "WeatherController.WeatherData"}}",
+            data: { "address": $("#address").val() },
+            success: function (response) {
+		var returnedData = JSON.parse(response)
+		$("#formatted_address").html('<b>Formatted Address: </b>'+returnedData.address);
+		$("#temperature").html('<b>Current Temperature: </b>'+returnedData.temperature);
+            }
+        });
+     event.preventDefault();
+    });
+});
+</script>
+
+</body>
+</html>

@@ -17,6 +17,8 @@ GET     /edit-book-form                         BookController.EditBookForm
 POST    /add-book                               BookController.AddBook
 POST    /edit-book                              BookController.EditBook
 GET     /published-books                        BookController.PublishedBooks
+GET     /weather                                WeatherController.GetWeather
+POST    /weather-data                           WeatherController.WeatherData
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

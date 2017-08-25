@@ -3,10 +3,11 @@ package services
 import (
 	"bytes"
 	"encoding/json"
-	"github.com/dgrijalva/jwt-go"
-	"github.com/revel/revel"
 	"io/ioutil"
 	"net/http"
+
+	"github.com/dgrijalva/jwt-go"
+	"github.com/revel/revel"
 )
 
 type CommonService struct {
@@ -36,6 +37,8 @@ func (c CommonService) CallBackend(methodType string, url string, jsonStr []byte
 	completeURL := revel.Config.StringDefault("microservice_server_url", "") + url
 	if session["server"] == "revel" {
 		completeURL = revel.Config.StringDefault("backend_server_url", "") + url
+	} else if session["server"] == "weather" {
+		completeURL = revel.Config.StringDefault("weather_server_url", "") + url
 	}
 
 	request, err := http.NewRequest(methodType, completeURL, bytes.NewBuffer(jsonStr))

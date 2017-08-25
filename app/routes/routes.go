@@ -4,40 +4,24 @@ package routes
 import "github.com/revel/revel"
 
 
-type tApplication struct {}
-var Application tApplication
+type tWeatherController struct {}
+var WeatherController tWeatherController
 
 
-func (_ tApplication) Index(
+func (_ tWeatherController) GetWeather(
 		) string {
 	args := make(map[string]string)
 	
-	return revel.MainRouter.Reverse("Application.Index", args).URL
+	return revel.MainRouter.Reverse("WeatherController.GetWeather", args).URL
 }
 
-func (_ tApplication) About(
+func (_ tWeatherController) WeatherData(
+		address string,
 		) string {
 	args := make(map[string]string)
 	
-	return revel.MainRouter.Reverse("Application.About", args).URL
-}
-
-func (_ tApplication) CurlTest(
-		) string {
-	args := make(map[string]string)
-	
-	return revel.MainRouter.Reverse("Application.CurlTest", args).URL
-}
-
-func (_ tApplication) GetJWTToken(
-		email string,
-		password string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "email", email)
-	revel.Unbind(args, "password", password)
-	return revel.MainRouter.Reverse("Application.GetJWTToken", args).URL
+	revel.Unbind(args, "address", address)
+	return revel.MainRouter.Reverse("WeatherController.WeatherData", args).URL
 }
 
 
@@ -123,6 +107,43 @@ func (_ tBookController) AddBook(
 	
 	revel.Unbind(args, "book", book)
 	return revel.MainRouter.Reverse("BookController.AddBook", args).URL
+}
+
+
+type tApplication struct {}
+var Application tApplication
+
+
+func (_ tApplication) Index(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Application.Index", args).URL
+}
+
+func (_ tApplication) About(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Application.About", args).URL
+}
+
+func (_ tApplication) CurlTest(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Application.CurlTest", args).URL
+}
+
+func (_ tApplication) GetJWTToken(
+		email string,
+		password string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "email", email)
+	revel.Unbind(args, "password", password)
+	return revel.MainRouter.Reverse("Application.GetJWTToken", args).URL
 }
 
 
